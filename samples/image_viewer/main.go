@@ -44,6 +44,7 @@ func appMain(driver gxui.Driver) {
 	mx := source.Bounds().Max
 	window := theme.CreateWindow(mx.X, mx.Y, "Image viewer")
 	window.SetScale(flags.DefaultScaleFactor)
+
 	window.AddChild(img)
 
 	// Copy the image to a RGBA format before handing to a gxui.Texture

@@ -162,6 +162,7 @@ func addSpecies(animals *node) map[string]item {
 }
 
 func appMain(driver gxui.Driver) {
+	flags.FlagTheme = "light"
 	theme := flags.CreateTheme(driver)
 
 	layout := theme.CreateLinearLayout()

@@ -19,13 +19,18 @@ func panelHolder(name string, theme gxui.Theme) gxui.PanelHolder {
 	}
 
 	holder := theme.CreatePanelHolder()
+
 	holder.AddPanel(label(name+" 0 content"), name+" 0 panel")
 	holder.AddPanel(label(name+" 1 content"), name+" 1 panel")
 	holder.AddPanel(label(name+" 2 content"), name+" 2 panel")
+
+	holder.AddPanel(theme.CreateDropDownList(), name+" 3 panel")
+
 	return holder
 }
 
 func appMain(driver gxui.Driver) {
+	flags.FlagTheme = "dark"
 	theme := flags.CreateTheme(driver)
 
 	// ┌───────┐║┌───────┐
@@ -56,6 +61,7 @@ func appMain(driver gxui.Driver) {
 	vSplitter.AddChild(splitterCD)
 
 	window := theme.CreateWindow(800, 600, "Panels")
+	// window.SetBackgroundBrush(gxui.TransparentBrush)
 	window.SetScale(flags.DefaultScaleFactor)
 	window.AddChild(vSplitter)
 	window.OnClose(driver.Terminate)

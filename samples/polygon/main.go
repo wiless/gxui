@@ -26,6 +26,7 @@ func drawStar(canvas gxui.Canvas, center math.Point, radius, rotation float32, p
 		}
 	}
 	canvas.DrawPolygon(p, gxui.CreatePen(3, gxui.Red), gxui.CreateBrush(gxui.Yellow))
+
 }
 
 func drawMoon(canvas gxui.Canvas, center math.Point, radius float32) {
@@ -63,6 +64,7 @@ func appMain(driver gxui.Driver) {
 	window.SetScale(flags.DefaultScaleFactor)
 
 	canvas := driver.CreateCanvas(math.Size{W: 1000, H: 1000})
+
 	drawStar(canvas, math.Point{X: 100, Y: 100}, 50, 0.2, 6)
 	drawStar(canvas, math.Point{X: 650, Y: 170}, 70, 0.5, 7)
 	drawStar(canvas, math.Point{X: 40, Y: 300}, 20, 0, 5)
@@ -74,6 +76,7 @@ func appMain(driver gxui.Driver) {
 
 	image := theme.CreateImage()
 	image.SetCanvas(canvas)
+
 	window.AddChild(image)
 
 	window.OnClose(driver.Terminate)
@@ -81,4 +84,5 @@ func appMain(driver gxui.Driver) {
 
 func main() {
 	gl.StartDriver(appMain)
+
 }
